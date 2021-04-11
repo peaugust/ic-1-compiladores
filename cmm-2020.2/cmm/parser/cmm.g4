@@ -28,11 +28,13 @@ summ: left = mult (op = ('+' | '-') right = summ)*;
 
 mult: left = atom (op = ('*' | '/') right = mult)*;
 
-atom: '(' expr ')' | INT | ID | 'input' | call | BOOL;
+atom: '(' expr ')' | INT | ID | FLOAT | STRING | BOOL| 'input' | call ;
 
-BOOL: 'true' | 'false';
+BOOL: '\'true\'' | '\'false\'';
 INPUT: 'input';
 ELSE: 'else';
 ID: [a-zA-Z]+ [0-9a-zA-Z]*;
 INT: [0-9]+;
+FLOAT : [0-9]+'.'[0-9]+;
+STRING : '"' ~('"')* '"';
 WS: [ \r\n\t]+ -> skip;
