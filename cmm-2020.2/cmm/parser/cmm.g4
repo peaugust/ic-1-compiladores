@@ -1,49 +1,38 @@
 grammar cmm;
 
-start : func* EOF
-      ;
+start: func* EOF;
 
-func : 'def' name=ID '(' args? ')'  statms 
-     ;
+func: 'def' name = ID '(' args? ')' statms;
 
-args : ID (',' ID)*
-     ;
+args: ID (',' ID)*;
 
-statms : '{' statm* '}'
-       | statm
-       ;
+statms: '{' statm* '}' | statm;
 
-statm : ID '=' expr ';'                                       # assign
-      | 'print' expr ';'                                      # print
-      | 'if' cond=expr then=statms ('else' otherwise=statms)? # if
-      | 'while' cond=expr statms                              # while
-      | 'return' expr ';'                                     # return
-      ;
+statm:
+	ID '=' expr ';'													# assign
+	| 'print' expr ';'												# print
+	| 'if' cond = expr then = statms ('else' otherwise = statms)?	# if
+	| 'while' cond = expr statms									# while
+	| 'return' expr ';'												# return;
 
-call : name=ID '(' exprs? ')' 
-     ;
+call: name = ID '(' exprs? ')';
 
-exprs : expr (',' expr)*
-      ;
+exprs: expr (',' expr)*;
 
-expr : left=summ (op=('>'|'<'|'>='|'<='|'=='|'!=') right=expr)*
-     ;
+expr:
+	left = summ (
+		op = ('>' | '<' | '>=' | '<=' | '==' | '!=') right = expr
+	)*;
 
-summ : left=mult (op=('+'|'-') right=summ)*
-     ;
+summ: left = mult (op = ('+' | '-') right = summ)*;
 
-mult : left=atom (op=('*'|'/') right=mult)*
-     ;
+mult: left = atom (op = ('*' | '/') right = mult)*;
 
-atom : '(' expr ')'
-     | INT
-     | ID
-     | 'input'
-     | call
-     ;
+atom: '(' expr ')' | INT | ID | 'input' | call | BOOL;
 
-INPUT : 'input';
-ELSE : 'else';
-ID : [a-zA-Z]+[0-9a-zA-Z]*;
-INT : [0-9]+;
-WS : [ \r\n\t]+ -> skip;
+BOOL: 'true' | 'false';
+INPUT: 'input';
+ELSE: 'else';
+ID: [a-zA-Z]+ [0-9a-zA-Z]*;
+INT: [0-9]+;
+WS: [ \r\n\t]+ -> skip;
