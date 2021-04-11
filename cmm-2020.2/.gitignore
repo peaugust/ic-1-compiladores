@@ -13,3 +13,4 @@ cmmVisitor.py
 out.ll
 out.s
 .vscode/settings.json
+.DS_Store
