@@ -10,9 +10,8 @@ def main() {
     a = 10;
     b = false;
     c = true;
-    while a {
+    do {
         print fib(input);
-        a = a-1;
-    }
+        } while a ;
     return 0;
 }
