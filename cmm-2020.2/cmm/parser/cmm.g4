@@ -6,7 +6,10 @@ file_body: def_class | func | assign_statm;
 
 func: 'def' name = ID '(' args? ')' statms;
 
-def_class: 'class' name = CLASS_ID '{' class_scope* '}';
+def_class:
+	'class' name = CLASS_ID '{' init = init_func scope = class_scope* '}';
+
+init_func: 'def' name = 'init' '(' args? ')' statms;
 
 class_scope: func | assign_statm;
 
@@ -24,6 +27,7 @@ statm:
 	| 'return' expr ';'												# return;
 
 call: name = ID '(' exprs? ')';
+class_call: className = CLASS_ID '(' args? ')';
 
 exprs: expr (',' expr)*;
 
@@ -44,6 +48,7 @@ atom:
 	| STRING
 	| BOOL
 	| 'input'
+	| class_call
 	| call;
 
 BOOL: '\'true\'' | '\'false\'';
