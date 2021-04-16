@@ -7,9 +7,7 @@ file_body: def_class | func | assign_statm;
 func: 'def' name = ID '(' args? ')' statms;
 
 def_class:
-	'class' name = CLASS_ID '{' init = init_func scope = class_scope* '}';
-
-init_func: 'def' name = 'init' '(' args? ')' statms;
+	'class' name = CLASS_ID '{' init = func scope = class_scope* '}';
 
 class_scope: func | assign_statm;
 
