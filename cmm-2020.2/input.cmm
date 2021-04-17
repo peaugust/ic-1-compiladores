@@ -1,18 +1,19 @@
-def fib(n) {
+class TestClass {
+def init(n) {
     if n == 1 return 1;
-    return fib(n-1);
+    if n == 2 return 1;
+    varlorString = "testeString";
+    varlorPontoFlutuante = 12.5;
+    valorBooleano = 'false';
+    return fib(n-1)+fib(n-2);
 }
 
-def hello(n) {
-    return (n);
+a = 5;
+
+def test() {
+    return 6;
+}
 }
 
-def main() {
-    switch (a)
-        case 1:
-            print hello(1);
-            break;
-        default:
-            print hello(2);
-            break;
-}
+j = 5;
+a = TestClass(j);
