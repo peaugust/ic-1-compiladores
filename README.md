@@ -23,3 +23,9 @@ optional arguments:
   -h, --help  show this help message and exit
   -o          python output
 ```
+
+# To run python3 -m cmm input.cmm
+
+1. pip3 install ast-decompiler
+2. pip3 install requests
+3. python3 -m cmm input.cmm
