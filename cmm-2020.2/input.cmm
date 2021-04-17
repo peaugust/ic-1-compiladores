@@ -1,11 +1,13 @@
-def fib(n) {
+class TestClass {
+def init(n) {
     if n == 1 return 1;
     if n == 2 return 1;
     varlorString = "testeString";
-    varlorPontoFluturante = 12.5;
-    valorBloeano = 'false';
+    varlorPontoFlutuante = 12.5;
+    valorBooleano = 'false';
     return fib(n-1)+fib(n-2);
 }
+
 def main() {
     a = 10;
     b = false;
@@ -15,3 +17,12 @@ def main() {
         } while a ;
     return 0;
 }
+
+a = 5;
+
+def test() {
+    return 6;
+}
+
+j = 5;
+a = TestClass(j);
