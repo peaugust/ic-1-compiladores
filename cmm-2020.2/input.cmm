@@ -1,11 +1,12 @@
 class TestClass {
-def init(n) {
-    if n == 1 return 1;
-    if n == 2 return 1;
-    varlorString = "testeString";
-    varlorPontoFlutuante = 12.5;
-    valorBooleano = 'false';
-    return fib(n-1)+fib(n-2);
+    def init(n) {
+        if n == 1 return 1;
+        if n == 2 return 1;
+        varlorString = "testeString";
+        varlorPontoFlutuante = 12.5;
+        valorBooleano = 'false';
+        return fib(n-1)+fib(n-2);
+    }
 }
 
 def main() {
@@ -26,3 +27,17 @@ def test() {
 
 j = 5;
 a = TestClass(j);
+
+def hello(n) {
+    return (n);
+}
+
+def switchFunc() {
+    switch (a)
+        case 1:
+            print hello(1);
+            break;
+        default:
+            print hello(2);
+            break;
+}
