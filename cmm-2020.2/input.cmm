@@ -8,11 +8,20 @@ def init(n) {
     return fib(n-1)+fib(n-2);
 }
 
+def main() {
+    a = 10;
+    b = false;
+    c = true;
+    do {
+        print fib(input);
+        } while a ;
+    return 0;
+}
+
 a = 5;
 
 def test() {
     return 6;
-}
 }
 
 j = 5;

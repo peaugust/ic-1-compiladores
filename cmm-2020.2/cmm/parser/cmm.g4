@@ -22,6 +22,7 @@ statm:
 	| 'print' expr ';'												# print
 	| 'if' cond = expr then = statms ('else' otherwise = statms)?	# if
 	| 'while' cond = expr statms									# while
+	| 'do' statms 'while' cond = expr ';'                           # do
 	| 'return' expr ';'												# return;
 
 call: name = ID '(' exprs? ')';
