@@ -23,6 +23,7 @@ statm:
 	| 'if' cond = expr then = statms ('else' otherwise = statms)?	# if
 	| 'while' cond = expr statms									# while
 	| 'do' statms 'while' cond = expr ';'							# do
+	| 'for' '(' statm cond = expr ';' expr ')' statms               # for
 	| switch_case_stm												# switch
 	| 'break' ';'													# break
 	| 'return' expr ';'												# return
