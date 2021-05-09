@@ -28,7 +28,16 @@ statm:
 	| 'if' cond = expr then = statms ('else' otherwise = statms)?	# if
 	| 'while' cond = expr statms									# while
 	| 'do' statms 'while' cond = expr ';'							# do
-	| 'return' expr ';'												# return;
+	| 'for' '(' statm cond = expr ';' expr ')' statms				# for
+	| switch_case_stm												# switch
+	| 'break' ';'													# break
+	| 'return' expr ';'												# return
+	| ID '=' expr ';'												# assign;
+
+switch_case_stm:
+	'switch' '(' expr ')' (( 'case' expr ':')+ statm+)+ (
+		'default' ':' statm
+	)?;
 
 call: name = ID '(' exprs? ')';
 class_call: className = CLASS_ID '(' args? ')';
@@ -47,20 +56,20 @@ mult: left = atom (op = ('*' | '/') right = mult)*;
 atom:
 	'(' expr ')'
 	| INT
-	| ID
 	| FLOAT
 	| STRING
 	| BOOL
 	| 'input'
 	| class_call
+	| ID
 	| call;
 
 BOOL: '\'true\'' | '\'false\'';
 INPUT: 'input';
 ELSE: 'else';
-CLASS_ID: [A-Z]+ [a-zA-Z]*;
-ID: [a-zA-Z]+ [0-9a-zA-Z]*;
 INT: [0-9]+;
 FLOAT: [0-9]+ '.' [0-9]+;
 STRING: '"' ~('"')* '"';
 WS: [ \r\n\t]+ -> skip;
+CLASS_ID: [A-Z]+ [a-zA-Z]*;
+ID: [a-zA-Z]+ [0-9a-zA-Z]*;

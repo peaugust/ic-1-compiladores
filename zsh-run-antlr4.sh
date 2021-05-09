@@ -8,3 +8,6 @@ antlr4 cmm-2020.2/cmm/parser/cmm.g4 -o build
 cd build/cmm-2020.2/cmm/parser
 javac *.java
 grun cmm start -gui < ../../../../cmm-2020.2/input.cmm
+
+ # Run
+ ./zsh-run-antlr4.sh
