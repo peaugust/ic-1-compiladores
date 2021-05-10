@@ -32,8 +32,28 @@ def hello(n) {
     return (n);
 }
 
-def switchFunc() {
-    switchError (a)
+def switch() {
+    switch (a)
+        case 1:
+            print hello(1);
+            break;
+        default:
+            print hello(2);
+            break;
+}
+
+def switchFunc3() {
+    switch (a)
+        case 1:
+            print hello(1)
+            break
+        default:
+            print hello(2)
+            break
+}
+
+def switchFunc {
+    switch (a)
         case 1:
             print hello(1);
             break;
