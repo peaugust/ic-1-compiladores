@@ -17,17 +17,17 @@ statms: '{' statm* '}' | statm;
 
 assign_statm: ID '=' expr ';';
 
-statm:
-	assign_statm													# assign
-	| 'print' expr ';'												# print
-	| 'if' cond = expr then = statms ('else' otherwise = statms)?	# if
-	| 'while' cond = expr statms									# while
-	| 'do' statms 'while' cond = expr ';'							# do
-	| 'for' '('assign_statm cond = expr ';' expr ')' statms         # for
-	| switch_case_stm												# switch
-	| 'break' ';'													# break
-	| 'return' expr ';'												# return
-	| ID '=' expr ';'												# assign;
+statm:                             
+	assign_statm													                             # assign
+	| 'print' expr ';'												                             # print
+	| 'if' cond = expr then = statms ('else' otherwise = statms)?	                             # if
+	| 'while' cond = expr statms									                             # while
+	| 'do' statms 'while' cond = expr ';'														 # do
+	| 'for' '('assign_statm cond = expr ';' expr|'++'ID|'--'ID|ID'++'|ID'--'| ')' statms         # for
+	| switch_case_stm												                             # switch
+	| 'break' ';'													                             # break
+	| 'return' expr ';'												                             # return
+	| ID '=' expr ';'												                             # assign;
 
 switch_case_stm:
 	'switch' '(' expr ')' (( 'case' expr ':')+ statm+)+ (
