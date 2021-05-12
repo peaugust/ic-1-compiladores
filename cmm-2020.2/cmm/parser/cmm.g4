@@ -27,7 +27,7 @@ statm:
 	| switch_case_stm												                             # switch
 	| 'break' ';'													                             # break
 	| 'return' expr ';'												                             # return
-
+    ;
 
 switch_case_stm:
 	'switch' '(' expr ')' (( 'case' expr ':')+ statm+)+ (
