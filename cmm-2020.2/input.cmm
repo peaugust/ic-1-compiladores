@@ -1,46 +1,25 @@
 class TestClass {
-    def init(n) {
-        if n == 1 return 1;
-        if n == 2 return 1;
-        varlorString = "testeString";
-        varlorPontoFlutuante = 12.5;
-        valorBooleano = 'false';
-        return fib(n-1)+fib(n-2);
+    atbOne = 5;
+    atbTwo = 22;
+    atbThree = "String";
+    atbFour = false;
+
+    def init(a, b, c) {
+        if a > b {
+            atbOne = c;
+        } else {
+            atbTwo = atbTwo + b * a;
+        }
+    }
+
+    atb = 5;
+
+    def simpleFunction(x, y) {
+        return 2*atbOne*x+y;
     }
 }
 
-def main() {
-    a = 10;
-    b = false;
-    c = true;
-    do {
-        print fib(input);
-        } while a ;
-    return 0;
-    for (i=1; i<10 ; i+1) {
-        print fib(input);
-    }
-}
-
-a = 5;
-
-def test() {
-    return 6;
-}
-
-j = 5;
-a = TestClass(j);
-
-def hello(n) {
-    return (n);
-}
-
-def switchFunc() {
-    switch (a)
-        case 1:
-            print hello(1);
-            break;
-        default:
-            print hello(2);
-            break;
-}
+t = TestClass(5, 6, 7);
+t.simpleFunction(1,2);
+t.atb;
+t.atbOne;

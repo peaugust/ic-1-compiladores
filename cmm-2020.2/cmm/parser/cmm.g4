@@ -2,22 +2,27 @@ grammar cmm;
 
 start: file_body* EOF;
 
-file_body: def_class | func | assign_statm;
+file_body: def_class | func | assign_statm | class_prop_call;
 
 func: 'def' name = ID '(' args? ')' statms;
 
+func_call: name = ID '(' args? ')' ';';
+
+class_props: func_call | name = ID ';';
+
 def_class:
-	'class' name = CLASS_ID '{' init = func scope = class_scope* '}';
+	'class' name = CLASS_ID '{' atbs = assign_statm* init = func scope = class_scope* '}';
 
 class_scope: func | assign_statm;
 
-args: ID (',' ID)*;
+args: ID (',' ID)* | INT (',' INT)*;
 
 statms: '{' statm* '}' | statm;
 
 assign_statm: ID '=' expr ';';
+class_prop_call: ID '.' class_props;
 
-statm:                             
+statm:
 	assign_statm													                             # assign
 	| 'print' expr ';'												                             # print
 	| 'if' cond = expr then = statms ('else' otherwise = statms)?	                             # if
