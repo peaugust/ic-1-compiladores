@@ -14,3 +14,4 @@ out.ll
 out.s
 .vscode/settings.json
 .DS_Store
+venv/
