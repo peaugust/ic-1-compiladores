@@ -23,16 +23,19 @@ assign_statm: ID '=' expr ';';
 class_prop_call: ID '.' class_props;
 
 statm:
-	assign_statm													# assign
-	| 'print' expr ';'												# print
-	| 'if' cond = expr then = statms ('else' otherwise = statms)?	# if
-	| 'while' cond = expr statms									# while
-	| 'do' statms 'while' cond = expr ';'							# do
-	| 'for' '(' statm cond = expr ';' expr ')' statms				# for
-	| switch_case_stm												# switch
-	| 'break' ';'													# break
-	| 'return' expr ';'												# return
-	| ID '=' expr ';'												# assign;
+	assign_statm													                             # assign
+	| 'print' expr ';'												                             # print
+	| 'if' cond = expr then = statms ('else' otherwise = statms)?	                             # if
+	| 'while' cond = expr statms									                             # while
+	| 'do' statms 'while' cond = expr ';'														 # do
+	|  for_stm                                                                                   # for
+	| switch_case_stm												                             # switch
+	| 'break' ';'													                             # break
+	| 'return' expr ';'												                             # return
+    ;
+
+
+for_stm: 'for' '('assign_statm   cond = expr ';' expr|'++'ID|'--'ID|ID'++'|ID'--' ')' statms;
 
 switch_case_stm:
 	'switch' '(' expr ')' (( 'case' expr ':')+ statm+)+ (
